@@ -1,0 +1,30 @@
+{
+	"caption": {
+		"en_US": "Unified Object Visit",
+		"ru_RU": "Унифицированное посещение объектов"
+	},
+	"description": {
+		"full": {
+			"en_US": "readme.md",
+			"ru_RU": "readme_ru.md"
+		},
+		"short": {
+			"en_US": "Unified system for visiting map objects.",
+			"ru_RU": "Унифицированная система посещения объектов на карте."
+		}
+	},
+	"author": "daemon_n, idea: 𝑴𝒂𝒙𝒊𝒎𝒐𝑴𝒊𝒅𝒏𝒊𝒈𝒉𝒕",
+	"homepage": "",
+	"icon": {
+		"file": "",
+		"index": 0
+	},
+	"mod_version": "1.0.0",
+	"priority": 0,
+	"compatibility": {
+		"class": "default",
+		"entries": {},
+		"requires":[]
+	},
+	"category": "cheats"
+}

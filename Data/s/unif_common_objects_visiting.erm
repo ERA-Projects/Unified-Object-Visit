@@ -1,0 +1,175 @@
+ZVSE2
+
+
+!?FU(unif_ShrineVisiting);
+!!SR(CURRENT_OBJ):S?(spellId:y);
+!!HE(CURRENT_HERO):Z?(hero:y);
+!!VR(spellOffset:y):S1002 +(spellId);
+!!UN:C(hero)/(spellOffset)/1/?(isLearned:y);
+!!if&(isLearned);
+  !!FU(unif_InitGlobalVisiting):P;
+!!en;
+
+!$OB(OBJ_SHRINE_OF_MAGIC_INCANTATION)&i^timerIsHuman^;
+!!FU(unif_ShrineVisiting):P;
+
+
+!$OB(OBJ_SHRINE_OF_MAGIC_GESTURE)/0&i^timerIsHuman^;
+!!FU(unif_ShrineVisiting):P;
+
+!$OB(OBJ_SHRINE_OF_MAGIC_THOUGHT)/0&i^timerIsHuman^;
+!!FU(unif_ShrineVisiting):P;
+
+!$OB(OBJ_MARLETTO_TOWER)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_MARLETTO_TOWER)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_MARLETTO_TOWER)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_MERCENARY_CAMP)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_GARDEN_OF_REVELATION)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_STAR_AXIS)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+!$OB(OBJ_LEARNING_STONE)&i^timerIsHuman^;
+!!FU(unif_InitGlobalVisiting):P;
+
+
+!$OB(OBJ_TREE_OF_KNOWLEDGE)&i^timerIsHuman^;
+!!OB(CURRENT_OBJ):C?(cWord:y);
+!!VR(cWord):&(BITS_5_MASK);
+!!HE(CURRENT_HERO):V5/(cWord)/?(isVisted:y);
+!!if&(isVisted:y);;
+  !!UN:C4875323/4/?(typeCheck:y) C4875323/4/99817;?(typeCheck:y);
+  !!FU(unif_InitGlobalVisiting):P;
+  !!UN:C4875323/4/(typeCheck:y);
+!!en;
+
+!$OB(OBJ_LIBRARY_OF_ENLIGHTENMENT)&i^timerIsHuman^;
+!!OB(CURRENT_OBJ):C?(cWord:y);
+!!VR(cWord):&(BITS_5_MASK);
+
+!!HE(CURRENT_HERO):V6/(cWord)/?(isVisted:y);
+!!if&(isVisted:y);
+  !!FU(unif_InitGlobalVisiting):P;
+!!en;
+
+!$OB(OBJ_ARENA)&i^timerIsHuman^;
+
+!!OB(CURRENT_OBJ):C?(cWord:y);
+!!VR(cWord):&(BITS_5_MASK);
+
+!!HE(CURRENT_HERO):V7/(cWord)/?(isVisted:y);
+!!if&(isVisted:y);;
+  !!FU(unif_InitGlobalVisiting):P;
+!!en;
+
+
+
+!$OB(OBJ_SCHOOL_OF_MAGIC)&i^timerIsHuman^;
+
+!!OB(CURRENT_OBJ):C?(cWord:y);
+
+!!VR(cWord):&(BITS_5_MASK);
+
+!!HE(CURRENT_HERO):V8/(cWord)/?(isVisted:y);
+
+!!if&(isVisted);
+  
+  !!UN:C4862195/-4/4/?(oldCostCheck:y) C4862195/-4/4/0;
+  !!UN:C4862454/-4/4/?(oldCostRemove:y) C4862454/-4/4/0;
+  !!UN:C4862392/2/?(oldMoveCostCheck:y) C4862392/2/(OPCODE_NOP_2);
+  !!FU(unif_InitGlobalVisiting):P;
+  !!UN:C4862195/-4/4/(oldCostCheck:y) C4862454/-4/4/(oldCostRemove:y) C4862392/2/(oldMoveCostCheck);
+!!en;
+
+!$OB(OBJ_SCHOOL_OF_WAR)&i^timerIsHuman^;
+
+!!OB(CURRENT_OBJ):C?(cWord:y);
+
+!!VR(cWord):&(BITS_5_MASK);
+
+!!HE(CURRENT_HERO):V9/(cWord)/?(isVisted:y);
+
+!!if&(isVisted:y);;
+  !!UN:C4880211/-4/4/?(oldCostCheck:y) C4880211/-4/4/0;
+  !!UN:C4880531/-4/4/?(oldCostRemove:y) C4880531/-4/4/0;
+  !!UN:C4880394/1/4/?(oldCostAi:y) C4880394/1/4/0;
+
+  !!FU(unif_InitGlobalVisiting):P;
+
+  !!UN:C4880211/-4/4/(oldCostCheck:y) C4880531/-4/4/(oldCostRemove:y); C4880394/1/4/(oldCostAi:y);
+!!en;
+
+!$OB144/2&i^timerIsHuman^;
+!!OB(CURRENT_OBJ):C?(cWord:y);
+!!VR(cWord):&(BITS_5_MASK);
+!!HE(CURRENT_HERO):N?n;
+!!if&i^colosseumOfTheMagi_%(cWord)_%n^;
+  !!FU(unif_InitGlobalVisiting):P;
+!!en;
+
+
+!?FU(unif_InitGlobalVisiting)&i^tlqr_is_object_visiting^=(FALSE);
+!!HE(CURRENT_HERO):N?n;
+!!VRi^tlqr_is_object_visiting^:S(TRUE);
+!!FU(unif_VisitObjectByAllHeroes):Pv998/v999/v1000/n;
+!!VRi^tlqr_is_object_visiting^:S(FALSE);
+
+
+
+
+!?FU(unif_VisitObjectByAllHeroes);
+!#VA(x:x) (y:x) (z:x) (excludeHeroId:x);
+
+  *!FU(FunctionName):P;
+!!HE(excludeHeroId):O?o;
+!!FU(unif_Player_GetHeroesList):Po/?(heroes:y);
+
+!!SN:M(heroes)/?(size:y);
+
+!!if&(size)>1;
+  !!re i/0/(size)/1/-1;
+    !!SN:M(heroes)/i/?(heroId:y);
+
+    !!if&(heroId)<>(excludeHeroId);
+      !!HE(heroId):Z?(hero:y);
+      !!FU(unif_AdvMgr_HeroEnterObjectAsAi):P(x)/(y)/(z)/(hero);
+
+    !!en;
+
+  !!en;
+
+!!en;
+
+
+  !?FU(unif_AdvMgr_HeroEnterObjectAsAi);
+  !#VA(x:x) (y:x) (z:x) (hero:x);
+
+  !#VA(storedOpp[5]:y);
+  !!re i/0/4;
+    !!UN:Ci/4882831/(UNC_INT8)/?(storedOpp[i]) Ci/4882831/(UNC_INT8)/(OPCODE_NOP_1);
+  !!en;
+
+
+  !!SN:E7413375/1/(x)/(y)/(z);
+  !!VR(packed:y):Sv1;
+
+  !!UN:C(ADV_MANAGER)/(UNC_UINT32)/?(advMgr:y) C(advMgr)/92/(UNC_UINT32)/?(list:y);
+  !!SN:E4228816/2/(list)/(x)/(y)/(z);
+  !!VR(mapItem:y):Sv1;
+
+  !!UN:C(mapItem)/(UNC_UINT32)/?(objSetup:y) C(mapItem)/30/(UNC_UINT32)/?(objType:y);
+
+  !!SN:E4882784/(CALLCONV_THISCALL)/(advMgr)/(hero)/(mapItem)/(packed)/(FALSE); [AdvMgr_Enter2Object_Player]
+
+  !!re i/0/4;
+    !!UN:Ci/4882831/(UNC_INT8)/(storedOpp[i]);
+  !!en;
